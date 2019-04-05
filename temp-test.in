@@ -1,3 +1,4 @@
 {
-  "teste": [5,[]]
+  "a float": 56,5,
+  "teste":"teste"
 }

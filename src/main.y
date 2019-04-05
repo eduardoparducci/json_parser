@@ -11,7 +11,6 @@ int yylex(void);
 
 FILE:
   OBJETO { printf("VALIDO\n");}
-  |
   ;
 
 OBJETO:
@@ -47,38 +46,23 @@ VALUE:
   ;
 
 LIST:
-  LISTO LISTELEMENT LISTC {
+  LISTO LISTC {
+    //printf("Lista vazia!\n");
+  }
+  | LISTO LISTELEMENT LISTC {
     //printf("Lista reconhecida!\n");
     $$ = $2;
   }
   ;
 
 LISTELEMENT:
-  LISTELEMENT EOP FINALELEMENT { 
+  LISTELEMENT EOP VALUE { 
     //printf("Lista com mais de um valor\n");
-    $$ = $3;
-  }
-  | FINALELEMENT {
     $$ = $1;
   }
-  ;
-
-FINALELEMENT:
-  KEY {
-    //printf("Valor de lista tipo string!\n");
-  }
-  | NUMBER {
-    //printf("Valor de lista tipo numerico!\n");
-  }
-  | OBJETO {
-    //printf("Valor de lista tipo Objeto!\n");
+  | VALUE {
     $$ = $1;
   }
-  | LIST {
-    //printf("Valor de lista tipo Lista!\n");
-    $$ = $1;
-  }
-  |
   ;
 
 %%

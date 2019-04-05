@@ -40,10 +40,9 @@ void yyerror(char *);
 [,] {
     return EOP;
 }
-
-[\n] ;
+[[:alpha:]]+ ;
+[\n\;] ;
 [[:space:]]+ ;
-[[:^space]]]+ ;
 
 %%
 
